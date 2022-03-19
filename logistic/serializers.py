@@ -39,17 +39,13 @@ class StockSerializer(serializers.ModelSerializer):
             quantity = item['quantity']
             price = item['price']
             product = item['product']
-            obj, created = StockProduct.objects.update_or_create(
+            stock_product = StockProduct.objects.create(
+                stock = stock,
                 product = product,
                 quantity = quantity,
                 price = price,
-                defaults= {
-                    'stock': stock,
-                    'product': product,
-                    'quantity': quantity,
-                    'price': price
-                }
             )
+
         return stock
 
     def update(self, instance, validated_data):
@@ -68,6 +64,7 @@ class StockSerializer(serializers.ModelSerializer):
             product = item['product']
             obj, created = StockProduct.objects.update_or_create(
                 stock = instance.id,
+                product = product,
                 defaults= {
                     'stock': stock,
                     'product': product,

@@ -36,7 +36,7 @@ Content-Type: application/json
 ###
 
 # поиск продуктов по названию и описанию
-GET {{baseUrl}}/products/?search=помидор
+GET {{baseUrl}}/products/?search=Помидор
 Content-Type: application/json
 
 ###
@@ -46,7 +46,7 @@ POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
 {
-  "address": "ес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "address": " не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
   "positions": [
     {
       "product": 2,
@@ -64,13 +64,18 @@ Content-Type: application/json
 ###
 
 # обновляем записи на складе
-PATCH {{baseUrl}}/stocks/5/
+PATCH {{baseUrl}}/stocks/8/
 Content-Type: application/json
 
 {
   "positions": [
     {
       "product": 2,
+      "quantity": 110,
+      "price": 130.80
+    },
+    {
+      "product": 3,
       "quantity": 110,
       "price": 130.80
     }
